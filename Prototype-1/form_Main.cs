@@ -32,8 +32,10 @@ namespace Prototype_1
             InitializeComponent();
             AllocConsole();
 
+            btn_ExpandMenu.BringToFront();
             panel_Nav.MouseDown += panel_Nav_MouseDown;
             panel_Nav.Paint += new PaintEventHandler(panel_Nav_Paint);
+            this.Paint += new PaintEventHandler(form_Main_Paint);
         }
         private void panel_Nav_MouseDown(object sender, MouseEventArgs e)
         {
@@ -41,6 +43,22 @@ namespace Prototype_1
             {
                 ReleaseCapture();
                 SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+            }
+        }
+        private void form_Main_Paint(object sender, PaintEventArgs e)
+        {
+            Color gradiantColor1 = new Color();
+            Color gradiantColor2 = new Color();
+
+            gradiantColor1 = Color.FromArgb(255, 255, 255);
+            gradiantColor2 = Color.FromArgb(180, 180, 180);
+
+            Point startPoint = new Point(this.ClientRectangle.Left, this.ClientRectangle.Top); 
+            Point endPoint = new Point(this.ClientRectangle.Right, this.ClientRectangle.Bottom);
+
+            using (LinearGradientBrush brush = new LinearGradientBrush(startPoint, endPoint, gradiantColor1, gradiantColor2))
+            {
+                e.Graphics.FillRectangle(brush, this.ClientRectangle);
             }
         }
         private void panel_Nav_Paint(object sender, PaintEventArgs e)
@@ -51,9 +69,12 @@ namespace Prototype_1
             gradiantColor1 = Color.FromArgb(60, 120, 0);
             gradiantColor2 = Color.FromArgb(0, 80, 0);
 
-            using (LinearGradientBrush brush = new LinearGradientBrush(panel_Nav.ClientRectangle, gradiantColor1, gradiantColor2, LinearGradientMode.Vertical))
+            Point startPoint = new Point(this.ClientRectangle.Left, this.ClientRectangle.Top);
+            Point endPoint = new Point(this.ClientRectangle.Right, this.ClientRectangle.Bottom);
+
+            using (LinearGradientBrush brush = new LinearGradientBrush(startPoint, endPoint, gradiantColor1, gradiantColor2))
             {
-                e.Graphics.FillRectangle(brush, panel_Nav.ClientRectangle);
+                e.Graphics.FillRectangle(brush, this.ClientRectangle);
             }
         }
 

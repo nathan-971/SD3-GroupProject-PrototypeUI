@@ -28,53 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel_Nav = new System.Windows.Forms.Panel();
             this.btn_Minimize = new System.Windows.Forms.Button();
             this.label_Title = new System.Windows.Forms.Label();
             this.btn_Exit = new System.Windows.Forms.Button();
             this.panel_Menu = new System.Windows.Forms.Panel();
+            this.btn_AddInjury = new System.Windows.Forms.Button();
+            this.btn_DisqualifyPlayer = new System.Windows.Forms.Button();
+            this.btn_Halftime = new System.Windows.Forms.Button();
+            this.btn_Subsitution = new System.Windows.Forms.Button();
             this.btn_ExpandMenu = new System.Windows.Forms.Button();
             this.label_Pitch = new System.Windows.Forms.Label();
             this.label_PlayersOnPitch = new System.Windows.Forms.Label();
             this.label_TeamaActions = new System.Windows.Forms.Label();
             this.label_Clock = new System.Windows.Forms.Label();
             this.panel_PlayersPlaying = new System.Windows.Forms.Panel();
-            this.panel_Actions = new System.Windows.Forms.Panel();
-            this.panel_PitchGrid = new System.Windows.Forms.Panel();
-            this.btn_plr15 = new System.Windows.Forms.Button();
-            this.btn_plr14 = new System.Windows.Forms.Button();
-            this.btn_plr13 = new System.Windows.Forms.Button();
-            this.btn_plr12 = new System.Windows.Forms.Button();
-            this.btn_plr11 = new System.Windows.Forms.Button();
-            this.btn_plr10 = new System.Windows.Forms.Button();
-            this.btn_plr9 = new System.Windows.Forms.Button();
-            this.btn_plr8 = new System.Windows.Forms.Button();
+            this.btn_plr1 = new System.Windows.Forms.Button();
             this.btn_plr4 = new System.Windows.Forms.Button();
             this.btn_plr3 = new System.Windows.Forms.Button();
             this.btn_plr2 = new System.Windows.Forms.Button();
             this.btn_plr7 = new System.Windows.Forms.Button();
             this.btn_plr6 = new System.Windows.Forms.Button();
             this.btn_plr5 = new System.Windows.Forms.Button();
-            this.btn_plr1 = new System.Windows.Forms.Button();
-            this.btn_PitchTLeft = new System.Windows.Forms.Button();
-            this.btn_PitchTMiddle = new System.Windows.Forms.Button();
-            this.btn_PitchTRight = new System.Windows.Forms.Button();
-            this.btn_PitchMRight = new System.Windows.Forms.Button();
-            this.btn_PitchMCentre = new System.Windows.Forms.Button();
-            this.btn_PitchMLeft = new System.Windows.Forms.Button();
+            this.btn_plr10 = new System.Windows.Forms.Button();
+            this.btn_plr9 = new System.Windows.Forms.Button();
+            this.btn_plr8 = new System.Windows.Forms.Button();
+            this.btn_plr13 = new System.Windows.Forms.Button();
+            this.btn_plr11 = new System.Windows.Forms.Button();
+            this.btn_plr12 = new System.Windows.Forms.Button();
+            this.btn_plr14 = new System.Windows.Forms.Button();
+            this.btn_plr15 = new System.Windows.Forms.Button();
+            this.panel_Actions = new System.Windows.Forms.Panel();
+            this.label_PLACEHOLDER = new System.Windows.Forms.Label();
+            this.panel_PitchGrid = new System.Windows.Forms.Panel();
             this.btn_PitchBRight = new System.Windows.Forms.Button();
             this.btn_PitchBMiddle = new System.Windows.Forms.Button();
             this.btn_PitchBLeft = new System.Windows.Forms.Button();
-            this.label_PLACEHOLDER = new System.Windows.Forms.Label();
-            this.btn_Subsitution = new System.Windows.Forms.Button();
-            this.btn_Halftime = new System.Windows.Forms.Button();
-            this.btn_DisqualifyPlayer = new System.Windows.Forms.Button();
-            this.btn_AddInjury = new System.Windows.Forms.Button();
+            this.btn_PitchMRight = new System.Windows.Forms.Button();
+            this.btn_PitchMCentre = new System.Windows.Forms.Button();
+            this.btn_PitchMLeft = new System.Windows.Forms.Button();
+            this.btn_PitchTRight = new System.Windows.Forms.Button();
+            this.btn_PitchTMiddle = new System.Windows.Forms.Button();
+            this.btn_PitchTLeft = new System.Windows.Forms.Button();
+            this.eventLog1 = new System.Diagnostics.EventLog();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel_Nav.SuspendLayout();
             this.panel_Menu.SuspendLayout();
             this.panel_PlayersPlaying.SuspendLayout();
             this.panel_Actions.SuspendLayout();
             this.panel_PitchGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_Nav
@@ -149,6 +153,50 @@
             this.panel_Menu.Size = new System.Drawing.Size(900, 25);
             this.panel_Menu.TabIndex = 1;
             // 
+            // btn_AddInjury
+            // 
+            this.btn_AddInjury.Enabled = false;
+            this.btn_AddInjury.Location = new System.Drawing.Point(785, 17);
+            this.btn_AddInjury.Name = "btn_AddInjury";
+            this.btn_AddInjury.Size = new System.Drawing.Size(75, 71);
+            this.btn_AddInjury.TabIndex = 3;
+            this.btn_AddInjury.Text = "Add Injury Time";
+            this.btn_AddInjury.UseVisualStyleBackColor = true;
+            this.btn_AddInjury.Visible = false;
+            // 
+            // btn_DisqualifyPlayer
+            // 
+            this.btn_DisqualifyPlayer.Enabled = false;
+            this.btn_DisqualifyPlayer.Location = new System.Drawing.Point(694, 17);
+            this.btn_DisqualifyPlayer.Name = "btn_DisqualifyPlayer";
+            this.btn_DisqualifyPlayer.Size = new System.Drawing.Size(75, 71);
+            this.btn_DisqualifyPlayer.TabIndex = 2;
+            this.btn_DisqualifyPlayer.Text = "Disqualify Player";
+            this.btn_DisqualifyPlayer.UseVisualStyleBackColor = true;
+            this.btn_DisqualifyPlayer.Visible = false;
+            // 
+            // btn_Halftime
+            // 
+            this.btn_Halftime.Enabled = false;
+            this.btn_Halftime.Location = new System.Drawing.Point(121, 17);
+            this.btn_Halftime.Name = "btn_Halftime";
+            this.btn_Halftime.Size = new System.Drawing.Size(75, 71);
+            this.btn_Halftime.TabIndex = 1;
+            this.btn_Halftime.Text = "Call Halftime";
+            this.btn_Halftime.UseVisualStyleBackColor = true;
+            this.btn_Halftime.Visible = false;
+            // 
+            // btn_Subsitution
+            // 
+            this.btn_Subsitution.Enabled = false;
+            this.btn_Subsitution.Location = new System.Drawing.Point(24, 17);
+            this.btn_Subsitution.Name = "btn_Subsitution";
+            this.btn_Subsitution.Size = new System.Drawing.Size(75, 71);
+            this.btn_Subsitution.TabIndex = 0;
+            this.btn_Subsitution.Text = "Substitute Player";
+            this.btn_Subsitution.UseVisualStyleBackColor = true;
+            this.btn_Subsitution.Visible = false;
+            // 
             // btn_ExpandMenu
             // 
             this.btn_ExpandMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(0)))));
@@ -167,6 +215,7 @@
             // label_Pitch
             // 
             this.label_Pitch.AutoSize = true;
+            this.label_Pitch.BackColor = System.Drawing.Color.Transparent;
             this.label_Pitch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Pitch.Location = new System.Drawing.Point(1118, 99);
             this.label_Pitch.Name = "label_Pitch";
@@ -177,6 +226,7 @@
             // label_PlayersOnPitch
             // 
             this.label_PlayersOnPitch.AutoSize = true;
+            this.label_PlayersOnPitch.BackColor = System.Drawing.Color.Transparent;
             this.label_PlayersOnPitch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_PlayersOnPitch.Location = new System.Drawing.Point(622, 99);
             this.label_PlayersOnPitch.Name = "label_PlayersOnPitch";
@@ -187,6 +237,7 @@
             // label_TeamaActions
             // 
             this.label_TeamaActions.AutoSize = true;
+            this.label_TeamaActions.BackColor = System.Drawing.Color.Transparent;
             this.label_TeamaActions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_TeamaActions.Location = new System.Drawing.Point(198, 99);
             this.label_TeamaActions.Name = "label_TeamaActions";
@@ -197,6 +248,7 @@
             // label_Clock
             // 
             this.label_Clock.AutoSize = true;
+            this.label_Clock.BackColor = System.Drawing.Color.Transparent;
             this.label_Clock.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Clock.Location = new System.Drawing.Point(674, 49);
             this.label_Clock.Name = "label_Clock";
@@ -206,7 +258,7 @@
             // 
             // panel_PlayersPlaying
             // 
-            this.panel_PlayersPlaying.BackColor = System.Drawing.Color.Silver;
+            this.panel_PlayersPlaying.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panel_PlayersPlaying.Controls.Add(this.btn_plr1);
             this.panel_PlayersPlaying.Controls.Add(this.btn_plr4);
             this.panel_PlayersPlaying.Controls.Add(this.btn_plr3);
@@ -227,135 +279,18 @@
             this.panel_PlayersPlaying.Size = new System.Drawing.Size(329, 442);
             this.panel_PlayersPlaying.TabIndex = 6;
             // 
-            // panel_Actions
+            // btn_plr1
             // 
-            this.panel_Actions.BackColor = System.Drawing.Color.Silver;
-            this.panel_Actions.Controls.Add(this.label_PLACEHOLDER);
-            this.panel_Actions.Location = new System.Drawing.Point(75, 145);
-            this.panel_Actions.Name = "panel_Actions";
-            this.panel_Actions.Size = new System.Drawing.Size(329, 442);
-            this.panel_Actions.TabIndex = 7;
-            // 
-            // panel_PitchGrid
-            // 
-            this.panel_PitchGrid.BackColor = System.Drawing.Color.Silver;
-            this.panel_PitchGrid.Controls.Add(this.btn_PitchBRight);
-            this.panel_PitchGrid.Controls.Add(this.btn_PitchBMiddle);
-            this.panel_PitchGrid.Controls.Add(this.btn_PitchBLeft);
-            this.panel_PitchGrid.Controls.Add(this.btn_PitchMRight);
-            this.panel_PitchGrid.Controls.Add(this.btn_PitchMCentre);
-            this.panel_PitchGrid.Controls.Add(this.btn_PitchMLeft);
-            this.panel_PitchGrid.Controls.Add(this.btn_PitchTRight);
-            this.panel_PitchGrid.Controls.Add(this.btn_PitchTMiddle);
-            this.panel_PitchGrid.Controls.Add(this.btn_PitchTLeft);
-            this.panel_PitchGrid.Location = new System.Drawing.Point(1007, 145);
-            this.panel_PitchGrid.Name = "panel_PitchGrid";
-            this.panel_PitchGrid.Size = new System.Drawing.Size(329, 442);
-            this.panel_PitchGrid.TabIndex = 8;
-            // 
-            // btn_plr15
-            // 
-            this.btn_plr15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_plr15.BackColor = System.Drawing.Color.ForestGreen;
-            this.btn_plr15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_plr15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_plr15.Location = new System.Drawing.Point(219, 337);
-            this.btn_plr15.Name = "btn_plr15";
-            this.btn_plr15.Size = new System.Drawing.Size(97, 54);
-            this.btn_plr15.TabIndex = 3;
-            this.btn_plr15.Text = "15";
-            this.btn_plr15.UseVisualStyleBackColor = false;
-            // 
-            // btn_plr14
-            // 
-            this.btn_plr14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_plr14.BackColor = System.Drawing.Color.ForestGreen;
-            this.btn_plr14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_plr14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_plr14.Location = new System.Drawing.Point(116, 337);
-            this.btn_plr14.Name = "btn_plr14";
-            this.btn_plr14.Size = new System.Drawing.Size(97, 54);
-            this.btn_plr14.TabIndex = 4;
-            this.btn_plr14.Text = "14";
-            this.btn_plr14.UseVisualStyleBackColor = false;
-            // 
-            // btn_plr13
-            // 
-            this.btn_plr13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_plr13.BackColor = System.Drawing.Color.ForestGreen;
-            this.btn_plr13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_plr13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_plr13.Location = new System.Drawing.Point(13, 337);
-            this.btn_plr13.Name = "btn_plr13";
-            this.btn_plr13.Size = new System.Drawing.Size(97, 54);
-            this.btn_plr13.TabIndex = 8;
-            this.btn_plr13.Text = "13";
-            this.btn_plr13.UseVisualStyleBackColor = false;
-            // 
-            // btn_plr12
-            // 
-            this.btn_plr12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_plr12.BackColor = System.Drawing.Color.ForestGreen;
-            this.btn_plr12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_plr12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_plr12.Location = new System.Drawing.Point(219, 277);
-            this.btn_plr12.Name = "btn_plr12";
-            this.btn_plr12.Size = new System.Drawing.Size(97, 54);
-            this.btn_plr12.TabIndex = 7;
-            this.btn_plr12.Text = "12";
-            this.btn_plr12.UseVisualStyleBackColor = false;
-            // 
-            // btn_plr11
-            // 
-            this.btn_plr11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_plr11.BackColor = System.Drawing.Color.ForestGreen;
-            this.btn_plr11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_plr11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_plr11.Location = new System.Drawing.Point(116, 277);
-            this.btn_plr11.Name = "btn_plr11";
-            this.btn_plr11.Size = new System.Drawing.Size(97, 54);
-            this.btn_plr11.TabIndex = 6;
-            this.btn_plr11.Text = "11";
-            this.btn_plr11.UseVisualStyleBackColor = false;
-            // 
-            // btn_plr10
-            // 
-            this.btn_plr10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_plr10.BackColor = System.Drawing.Color.ForestGreen;
-            this.btn_plr10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_plr10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_plr10.Location = new System.Drawing.Point(13, 277);
-            this.btn_plr10.Name = "btn_plr10";
-            this.btn_plr10.Size = new System.Drawing.Size(97, 54);
-            this.btn_plr10.TabIndex = 11;
-            this.btn_plr10.Text = "10";
-            this.btn_plr10.UseVisualStyleBackColor = false;
-            // 
-            // btn_plr9
-            // 
-            this.btn_plr9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_plr9.BackColor = System.Drawing.Color.ForestGreen;
-            this.btn_plr9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_plr9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_plr9.Location = new System.Drawing.Point(169, 217);
-            this.btn_plr9.Name = "btn_plr9";
-            this.btn_plr9.Size = new System.Drawing.Size(97, 54);
-            this.btn_plr9.TabIndex = 10;
-            this.btn_plr9.Text = "9";
-            this.btn_plr9.UseVisualStyleBackColor = false;
-            // 
-            // btn_plr8
-            // 
-            this.btn_plr8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_plr8.BackColor = System.Drawing.Color.ForestGreen;
-            this.btn_plr8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_plr8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_plr8.Location = new System.Drawing.Point(66, 217);
-            this.btn_plr8.Name = "btn_plr8";
-            this.btn_plr8.Size = new System.Drawing.Size(97, 54);
-            this.btn_plr8.TabIndex = 9;
-            this.btn_plr8.Text = "8";
-            this.btn_plr8.UseVisualStyleBackColor = false;
+            this.btn_plr1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_plr1.BackColor = System.Drawing.Color.ForestGreen;
+            this.btn_plr1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_plr1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_plr1.Location = new System.Drawing.Point(116, 37);
+            this.btn_plr1.Name = "btn_plr1";
+            this.btn_plr1.Size = new System.Drawing.Size(97, 54);
+            this.btn_plr1.TabIndex = 18;
+            this.btn_plr1.Text = "1";
+            this.btn_plr1.UseVisualStyleBackColor = false;
             // 
             // btn_plr4
             // 
@@ -435,96 +370,145 @@
             this.btn_plr5.Text = "5";
             this.btn_plr5.UseVisualStyleBackColor = false;
             // 
-            // btn_plr1
+            // btn_plr10
             // 
-            this.btn_plr1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_plr1.BackColor = System.Drawing.Color.ForestGreen;
-            this.btn_plr1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_plr1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_plr1.Location = new System.Drawing.Point(116, 37);
-            this.btn_plr1.Name = "btn_plr1";
-            this.btn_plr1.Size = new System.Drawing.Size(97, 54);
-            this.btn_plr1.TabIndex = 18;
-            this.btn_plr1.Text = "1";
-            this.btn_plr1.UseVisualStyleBackColor = false;
+            this.btn_plr10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_plr10.BackColor = System.Drawing.Color.ForestGreen;
+            this.btn_plr10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_plr10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_plr10.Location = new System.Drawing.Point(13, 277);
+            this.btn_plr10.Name = "btn_plr10";
+            this.btn_plr10.Size = new System.Drawing.Size(97, 54);
+            this.btn_plr10.TabIndex = 11;
+            this.btn_plr10.Text = "10";
+            this.btn_plr10.UseVisualStyleBackColor = false;
             // 
-            // btn_PitchTLeft
+            // btn_plr9
             // 
-            this.btn_PitchTLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_PitchTLeft.BackColor = System.Drawing.Color.Chartreuse;
-            this.btn_PitchTLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_PitchTLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PitchTLeft.Location = new System.Drawing.Point(10, 65);
-            this.btn_PitchTLeft.Name = "btn_PitchTLeft";
-            this.btn_PitchTLeft.Size = new System.Drawing.Size(100, 100);
-            this.btn_PitchTLeft.TabIndex = 19;
-            this.btn_PitchTLeft.Text = "TOP LEFT";
-            this.btn_PitchTLeft.UseVisualStyleBackColor = false;
+            this.btn_plr9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_plr9.BackColor = System.Drawing.Color.ForestGreen;
+            this.btn_plr9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_plr9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_plr9.Location = new System.Drawing.Point(169, 217);
+            this.btn_plr9.Name = "btn_plr9";
+            this.btn_plr9.Size = new System.Drawing.Size(97, 54);
+            this.btn_plr9.TabIndex = 10;
+            this.btn_plr9.Text = "9";
+            this.btn_plr9.UseVisualStyleBackColor = false;
             // 
-            // btn_PitchTMiddle
+            // btn_plr8
             // 
-            this.btn_PitchTMiddle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_PitchTMiddle.BackColor = System.Drawing.Color.Chartreuse;
-            this.btn_PitchTMiddle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_PitchTMiddle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PitchTMiddle.Location = new System.Drawing.Point(116, 65);
-            this.btn_PitchTMiddle.Name = "btn_PitchTMiddle";
-            this.btn_PitchTMiddle.Size = new System.Drawing.Size(100, 100);
-            this.btn_PitchTMiddle.TabIndex = 20;
-            this.btn_PitchTMiddle.Text = "TOP MIDDLE";
-            this.btn_PitchTMiddle.UseVisualStyleBackColor = false;
+            this.btn_plr8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_plr8.BackColor = System.Drawing.Color.ForestGreen;
+            this.btn_plr8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_plr8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_plr8.Location = new System.Drawing.Point(66, 217);
+            this.btn_plr8.Name = "btn_plr8";
+            this.btn_plr8.Size = new System.Drawing.Size(97, 54);
+            this.btn_plr8.TabIndex = 9;
+            this.btn_plr8.Text = "8";
+            this.btn_plr8.UseVisualStyleBackColor = false;
             // 
-            // btn_PitchTRight
+            // btn_plr13
             // 
-            this.btn_PitchTRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_PitchTRight.BackColor = System.Drawing.Color.Chartreuse;
-            this.btn_PitchTRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_PitchTRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PitchTRight.Location = new System.Drawing.Point(222, 65);
-            this.btn_PitchTRight.Name = "btn_PitchTRight";
-            this.btn_PitchTRight.Size = new System.Drawing.Size(100, 100);
-            this.btn_PitchTRight.TabIndex = 21;
-            this.btn_PitchTRight.Text = "TOP RIGHT";
-            this.btn_PitchTRight.UseVisualStyleBackColor = false;
+            this.btn_plr13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_plr13.BackColor = System.Drawing.Color.ForestGreen;
+            this.btn_plr13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_plr13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_plr13.Location = new System.Drawing.Point(13, 337);
+            this.btn_plr13.Name = "btn_plr13";
+            this.btn_plr13.Size = new System.Drawing.Size(97, 54);
+            this.btn_plr13.TabIndex = 8;
+            this.btn_plr13.Text = "13";
+            this.btn_plr13.UseVisualStyleBackColor = false;
             // 
-            // btn_PitchMRight
+            // btn_plr11
             // 
-            this.btn_PitchMRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_PitchMRight.BackColor = System.Drawing.Color.Chartreuse;
-            this.btn_PitchMRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_PitchMRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PitchMRight.Location = new System.Drawing.Point(222, 171);
-            this.btn_PitchMRight.Name = "btn_PitchMRight";
-            this.btn_PitchMRight.Size = new System.Drawing.Size(100, 100);
-            this.btn_PitchMRight.TabIndex = 24;
-            this.btn_PitchMRight.Text = "MIDDLE RIGHT";
-            this.btn_PitchMRight.UseVisualStyleBackColor = false;
+            this.btn_plr11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_plr11.BackColor = System.Drawing.Color.ForestGreen;
+            this.btn_plr11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_plr11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_plr11.Location = new System.Drawing.Point(116, 277);
+            this.btn_plr11.Name = "btn_plr11";
+            this.btn_plr11.Size = new System.Drawing.Size(97, 54);
+            this.btn_plr11.TabIndex = 6;
+            this.btn_plr11.Text = "11";
+            this.btn_plr11.UseVisualStyleBackColor = false;
             // 
-            // btn_PitchMCentre
+            // btn_plr12
             // 
-            this.btn_PitchMCentre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_PitchMCentre.BackColor = System.Drawing.Color.Chartreuse;
-            this.btn_PitchMCentre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_PitchMCentre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PitchMCentre.Location = new System.Drawing.Point(116, 171);
-            this.btn_PitchMCentre.Name = "btn_PitchMCentre";
-            this.btn_PitchMCentre.Size = new System.Drawing.Size(100, 100);
-            this.btn_PitchMCentre.TabIndex = 23;
-            this.btn_PitchMCentre.Text = "CENTRE";
-            this.btn_PitchMCentre.UseVisualStyleBackColor = false;
+            this.btn_plr12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_plr12.BackColor = System.Drawing.Color.ForestGreen;
+            this.btn_plr12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_plr12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_plr12.Location = new System.Drawing.Point(219, 277);
+            this.btn_plr12.Name = "btn_plr12";
+            this.btn_plr12.Size = new System.Drawing.Size(97, 54);
+            this.btn_plr12.TabIndex = 7;
+            this.btn_plr12.Text = "12";
+            this.btn_plr12.UseVisualStyleBackColor = false;
             // 
-            // btn_PitchMLeft
+            // btn_plr14
             // 
-            this.btn_PitchMLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_PitchMLeft.BackColor = System.Drawing.Color.Chartreuse;
-            this.btn_PitchMLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_PitchMLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PitchMLeft.Location = new System.Drawing.Point(10, 171);
-            this.btn_PitchMLeft.Name = "btn_PitchMLeft";
-            this.btn_PitchMLeft.Size = new System.Drawing.Size(100, 100);
-            this.btn_PitchMLeft.TabIndex = 22;
-            this.btn_PitchMLeft.Text = "MIDDLE LEFT";
-            this.btn_PitchMLeft.UseVisualStyleBackColor = false;
+            this.btn_plr14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_plr14.BackColor = System.Drawing.Color.ForestGreen;
+            this.btn_plr14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_plr14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_plr14.Location = new System.Drawing.Point(116, 337);
+            this.btn_plr14.Name = "btn_plr14";
+            this.btn_plr14.Size = new System.Drawing.Size(97, 54);
+            this.btn_plr14.TabIndex = 4;
+            this.btn_plr14.Text = "14";
+            this.btn_plr14.UseVisualStyleBackColor = false;
+            // 
+            // btn_plr15
+            // 
+            this.btn_plr15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_plr15.BackColor = System.Drawing.Color.ForestGreen;
+            this.btn_plr15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_plr15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_plr15.Location = new System.Drawing.Point(219, 337);
+            this.btn_plr15.Name = "btn_plr15";
+            this.btn_plr15.Size = new System.Drawing.Size(97, 54);
+            this.btn_plr15.TabIndex = 3;
+            this.btn_plr15.Text = "15";
+            this.btn_plr15.UseVisualStyleBackColor = false;
+            // 
+            // panel_Actions
+            // 
+            this.panel_Actions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel_Actions.Controls.Add(this.label_PLACEHOLDER);
+            this.panel_Actions.Location = new System.Drawing.Point(75, 145);
+            this.panel_Actions.Name = "panel_Actions";
+            this.panel_Actions.Size = new System.Drawing.Size(329, 442);
+            this.panel_Actions.TabIndex = 7;
+            // 
+            // label_PLACEHOLDER
+            // 
+            this.label_PLACEHOLDER.AutoSize = true;
+            this.label_PLACEHOLDER.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_PLACEHOLDER.Location = new System.Drawing.Point(77, 206);
+            this.label_PLACEHOLDER.Name = "label_PLACEHOLDER";
+            this.label_PLACEHOLDER.Size = new System.Drawing.Size(184, 25);
+            this.label_PLACEHOLDER.TabIndex = 0;
+            this.label_PLACEHOLDER.Text = "DATAGRIDVIEW";
+            // 
+            // panel_PitchGrid
+            // 
+            this.panel_PitchGrid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel_PitchGrid.Controls.Add(this.btn_PitchBRight);
+            this.panel_PitchGrid.Controls.Add(this.btn_PitchBMiddle);
+            this.panel_PitchGrid.Controls.Add(this.btn_PitchBLeft);
+            this.panel_PitchGrid.Controls.Add(this.btn_PitchMRight);
+            this.panel_PitchGrid.Controls.Add(this.btn_PitchMCentre);
+            this.panel_PitchGrid.Controls.Add(this.btn_PitchMLeft);
+            this.panel_PitchGrid.Controls.Add(this.btn_PitchTRight);
+            this.panel_PitchGrid.Controls.Add(this.btn_PitchTMiddle);
+            this.panel_PitchGrid.Controls.Add(this.btn_PitchTLeft);
+            this.panel_PitchGrid.Location = new System.Drawing.Point(1007, 145);
+            this.panel_PitchGrid.Name = "panel_PitchGrid";
+            this.panel_PitchGrid.Size = new System.Drawing.Size(329, 442);
+            this.panel_PitchGrid.TabIndex = 8;
             // 
             // btn_PitchBRight
             // 
@@ -565,59 +549,92 @@
             this.btn_PitchBLeft.Text = "BOTTOM LEFT";
             this.btn_PitchBLeft.UseVisualStyleBackColor = false;
             // 
-            // label_PLACEHOLDER
+            // btn_PitchMRight
             // 
-            this.label_PLACEHOLDER.AutoSize = true;
-            this.label_PLACEHOLDER.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_PLACEHOLDER.Location = new System.Drawing.Point(77, 206);
-            this.label_PLACEHOLDER.Name = "label_PLACEHOLDER";
-            this.label_PLACEHOLDER.Size = new System.Drawing.Size(184, 25);
-            this.label_PLACEHOLDER.TabIndex = 0;
-            this.label_PLACEHOLDER.Text = "DATAGRIDVIEW";
+            this.btn_PitchMRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_PitchMRight.BackColor = System.Drawing.Color.Chartreuse;
+            this.btn_PitchMRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_PitchMRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_PitchMRight.Location = new System.Drawing.Point(222, 171);
+            this.btn_PitchMRight.Name = "btn_PitchMRight";
+            this.btn_PitchMRight.Size = new System.Drawing.Size(100, 100);
+            this.btn_PitchMRight.TabIndex = 24;
+            this.btn_PitchMRight.Text = "MIDDLE RIGHT";
+            this.btn_PitchMRight.UseVisualStyleBackColor = false;
             // 
-            // btn_Subsitution
+            // btn_PitchMCentre
             // 
-            this.btn_Subsitution.Enabled = false;
-            this.btn_Subsitution.Location = new System.Drawing.Point(24, 17);
-            this.btn_Subsitution.Name = "btn_Subsitution";
-            this.btn_Subsitution.Size = new System.Drawing.Size(75, 71);
-            this.btn_Subsitution.TabIndex = 0;
-            this.btn_Subsitution.Text = "Substitute Player";
-            this.btn_Subsitution.UseVisualStyleBackColor = true;
-            this.btn_Subsitution.Visible = false;
+            this.btn_PitchMCentre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_PitchMCentre.BackColor = System.Drawing.Color.Chartreuse;
+            this.btn_PitchMCentre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_PitchMCentre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_PitchMCentre.Location = new System.Drawing.Point(116, 171);
+            this.btn_PitchMCentre.Name = "btn_PitchMCentre";
+            this.btn_PitchMCentre.Size = new System.Drawing.Size(100, 100);
+            this.btn_PitchMCentre.TabIndex = 23;
+            this.btn_PitchMCentre.Text = "CENTRE";
+            this.btn_PitchMCentre.UseVisualStyleBackColor = false;
             // 
-            // btn_Halftime
+            // btn_PitchMLeft
             // 
-            this.btn_Halftime.Enabled = false;
-            this.btn_Halftime.Location = new System.Drawing.Point(121, 17);
-            this.btn_Halftime.Name = "btn_Halftime";
-            this.btn_Halftime.Size = new System.Drawing.Size(75, 71);
-            this.btn_Halftime.TabIndex = 1;
-            this.btn_Halftime.Text = "Call Halftime";
-            this.btn_Halftime.UseVisualStyleBackColor = true;
-            this.btn_Halftime.Visible = false;
+            this.btn_PitchMLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_PitchMLeft.BackColor = System.Drawing.Color.Chartreuse;
+            this.btn_PitchMLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_PitchMLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_PitchMLeft.Location = new System.Drawing.Point(10, 171);
+            this.btn_PitchMLeft.Name = "btn_PitchMLeft";
+            this.btn_PitchMLeft.Size = new System.Drawing.Size(100, 100);
+            this.btn_PitchMLeft.TabIndex = 22;
+            this.btn_PitchMLeft.Text = "MIDDLE LEFT";
+            this.btn_PitchMLeft.UseVisualStyleBackColor = false;
             // 
-            // btn_DisqualifyPlayer
+            // btn_PitchTRight
             // 
-            this.btn_DisqualifyPlayer.Enabled = false;
-            this.btn_DisqualifyPlayer.Location = new System.Drawing.Point(694, 17);
-            this.btn_DisqualifyPlayer.Name = "btn_DisqualifyPlayer";
-            this.btn_DisqualifyPlayer.Size = new System.Drawing.Size(75, 71);
-            this.btn_DisqualifyPlayer.TabIndex = 2;
-            this.btn_DisqualifyPlayer.Text = "Disqualify Player";
-            this.btn_DisqualifyPlayer.UseVisualStyleBackColor = true;
-            this.btn_DisqualifyPlayer.Visible = false;
+            this.btn_PitchTRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_PitchTRight.BackColor = System.Drawing.Color.Chartreuse;
+            this.btn_PitchTRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_PitchTRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_PitchTRight.Location = new System.Drawing.Point(222, 65);
+            this.btn_PitchTRight.Name = "btn_PitchTRight";
+            this.btn_PitchTRight.Size = new System.Drawing.Size(100, 100);
+            this.btn_PitchTRight.TabIndex = 21;
+            this.btn_PitchTRight.Text = "TOP RIGHT";
+            this.btn_PitchTRight.UseVisualStyleBackColor = false;
             // 
-            // btn_AddInjury
+            // btn_PitchTMiddle
             // 
-            this.btn_AddInjury.Enabled = false;
-            this.btn_AddInjury.Location = new System.Drawing.Point(785, 17);
-            this.btn_AddInjury.Name = "btn_AddInjury";
-            this.btn_AddInjury.Size = new System.Drawing.Size(75, 71);
-            this.btn_AddInjury.TabIndex = 3;
-            this.btn_AddInjury.Text = "Add Injury Time";
-            this.btn_AddInjury.UseVisualStyleBackColor = true;
-            this.btn_AddInjury.Visible = false;
+            this.btn_PitchTMiddle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_PitchTMiddle.BackColor = System.Drawing.Color.Chartreuse;
+            this.btn_PitchTMiddle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_PitchTMiddle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_PitchTMiddle.Location = new System.Drawing.Point(116, 65);
+            this.btn_PitchTMiddle.Name = "btn_PitchTMiddle";
+            this.btn_PitchTMiddle.Size = new System.Drawing.Size(100, 100);
+            this.btn_PitchTMiddle.TabIndex = 20;
+            this.btn_PitchTMiddle.Text = "TOP MIDDLE";
+            this.btn_PitchTMiddle.UseVisualStyleBackColor = false;
+            // 
+            // btn_PitchTLeft
+            // 
+            this.btn_PitchTLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_PitchTLeft.BackColor = System.Drawing.Color.Chartreuse;
+            this.btn_PitchTLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_PitchTLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_PitchTLeft.Location = new System.Drawing.Point(10, 65);
+            this.btn_PitchTLeft.Name = "btn_PitchTLeft";
+            this.btn_PitchTLeft.Size = new System.Drawing.Size(100, 100);
+            this.btn_PitchTLeft.TabIndex = 19;
+            this.btn_PitchTLeft.Text = "TOP LEFT";
+            this.btn_PitchTLeft.UseVisualStyleBackColor = false;
+            // 
+            // eventLog1
+            // 
+            this.eventLog1.SynchronizingObject = this;
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
             // 
             // form_Main
             // 
@@ -645,6 +662,7 @@
             this.panel_Actions.ResumeLayout(false);
             this.panel_Actions.PerformLayout();
             this.panel_PitchGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -694,6 +712,8 @@
         private System.Windows.Forms.Button btn_DisqualifyPlayer;
         private System.Windows.Forms.Button btn_Halftime;
         private System.Windows.Forms.Button btn_Subsitution;
+        private System.Diagnostics.EventLog eventLog1;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 
