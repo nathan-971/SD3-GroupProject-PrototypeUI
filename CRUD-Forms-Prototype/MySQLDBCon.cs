@@ -12,11 +12,16 @@ namespace CRUD_Forms_Prototype
 
         public MySQLDBCon(string server, string username, string password, string database)
         {
+            _server = server;
+            _username = username;
+            _password = password;
+            _database = database;
+
             string connectionString =
-                $"Server={server};" +
-                $"Database={database};" +
-                $"User ID={username};" +
-                $"Password={password};" +
+                $"Server={_server};" +
+                $"Database={_database};" +
+                $"User ID={_username};" +
+                $"Password={_password};" +
                 $"SslMode=none;";
 
             try
@@ -29,6 +34,7 @@ namespace CRUD_Forms_Prototype
             catch (MySqlException ex)
             {
                 MessageBox.Show("MySQL Error:" + ex.Message);
+                connection = null;
             }
         }
 
@@ -73,6 +79,39 @@ namespace CRUD_Forms_Prototype
                 }
             }
         }
+
+        public override string[] requestAllTables()
+        {
+            List<string> tables = new List<string>();
+            try
+            {
+                connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand("SHOW TABLES", connection))
+                {
+                    using(MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while(reader.Read())
+                        {
+                            tables.Add(reader.GetString(0));                 
+                        }
+                    }
+                }
+            }
+            catch(MySqlException ex)
+            {
+                MessageBox.Show("MySQL Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+            return tables.ToArray();
+        }
+
         public override Dictionary<string, string> requestDescription(string table)
         {
             Dictionary<string, string> tableDescription = new Dictionary<string, string>();

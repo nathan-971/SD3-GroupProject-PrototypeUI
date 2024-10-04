@@ -106,6 +106,7 @@
             this.MinimizeBox = false;
             this.Name = "form_DBTables";
             this.Text = "CRUD Program";
+            this.Load += new System.EventHandler(this.form_DBTables_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_TableData)).EndInit();
             this.ResumeLayout(false);
 

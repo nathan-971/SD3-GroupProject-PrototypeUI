@@ -10,17 +10,29 @@ using System.Windows.Forms;
 
 namespace CRUD_Forms_Prototype
 {
-    public partial class form_InputBox : Form
+    public partial class form_TableInput : Form
     {
         public string inputText;
-        public form_InputBox()
+        public DatabaseConnection DBInstance;
+        public form_TableInput(DatabaseConnection instance)
         {
+            this.DBInstance = instance;
             InitializeComponent();
         }
-
+        private void form_TableInput_Load(object sender, EventArgs e)
+        {
+            cb_Tables.Items.Clear();
+            cb_Tables.DropDownStyle = ComboBoxStyle.DropDownList;
+            string[] tables = DBInstance.requestAllTables();
+            for (int i = 0; i < tables.Length; i++)
+            {
+                cb_Tables.Items.Add(tables[i]);
+            }
+            cb_Tables.SelectedIndex = 0;
+        }
         private void btn_Submit_Click(object sender, EventArgs e)
         {
-            inputText = tb_Input.Text;
+            inputText = cb_Tables.Text;
             DialogResult = DialogResult.OK;
             Close();
         }

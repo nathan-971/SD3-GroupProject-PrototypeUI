@@ -85,7 +85,7 @@ namespace CRUD_Forms_Prototype
 
         private void btn_SQLSERVER_Click(object sender, EventArgs e)
         {
-            labels = new string[]{ "Server", "Database", "Username", "Password", "Trust This Machine?"};
+            labels = new string[]{ "Server", "Username", "Password", "Database", "Trust This Machine?"};
             parameters = new string[labels.Length];
 
             label_Option.Visible = false;
@@ -99,7 +99,7 @@ namespace CRUD_Forms_Prototype
 
             int curY = 10;
             int curX = 10;
-            for (int i = 0; i < labels.Length; i++)
+            for (int i = 0; i < 4; i++)
             {
                 Label label = new Label()
                 {
@@ -120,11 +120,30 @@ namespace CRUD_Forms_Prototype
 
                 curY += 20;
             }
+
+            Label checkBoxLabel = new Label()
+            {
+                Name = $"label_{labels[4]}",
+                Text = labels[4],
+                Location = new Point(curX, curY + 20),
+                AutoSize = true
+            };
+            Controls.Add(checkBoxLabel);
+
+            // Position for checkbox
+            CheckBox checkBox = new CheckBox
+            {
+                Name = $"chb_{labels[4]}",
+                Text = "",
+                Location = new Point(curX + checkBoxLabel.Width + 5, curY + 20)
+            };
+            Controls.Add(checkBox);
+
             Button button = new Button
             {
                 Name = "btn_Submit",
                 Text = "Submit",
-                Location = new Point(curX, curY),
+                Location = new Point(curX, curY + 50),
                 AutoSize = true
             };
             Controls.Add(button);
@@ -134,7 +153,7 @@ namespace CRUD_Forms_Prototype
         private void button_SQLServer_Submit(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
-            for (int i = 0; i < labels.Length; i++)
+            for (int i = 0; i < 4; i++)
             {
                 TextBox textBox = Controls.Find($"tb_{labels[i]}", true).FirstOrDefault() as TextBox;
 
@@ -143,6 +162,8 @@ namespace CRUD_Forms_Prototype
                     parameters[i] = textBox.Text;
                 }
             }
+            CheckBox chb = Controls.Find($"chb_{labels[4]}", true).FirstOrDefault() as CheckBox;
+            parameters[4] = chb.Checked.ToString();
             MySQL = false;
         }
     }

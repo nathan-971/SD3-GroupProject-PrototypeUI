@@ -10,6 +10,10 @@ namespace CRUD_Forms_Prototype
 {
     public partial class form_DBTables : Form
     {
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
+
         private DatabaseConnection DB;
         private string[] headerData;
         private string[] rowData;
@@ -18,18 +22,19 @@ namespace CRUD_Forms_Prototype
 
         public form_DBTables()
         {
-            //Create Database Object Depending On Engine Choice
-            using(form_EngineChoice fec = new form_EngineChoice()) 
-            { 
-                if(DialogResult.OK == fec.ShowDialog()) 
-                { 
-                    if(fec.MySQL)
+            AllocConsole();
+            //Create Database Object Depending On Engine Choice and Start Form
+            using (form_EngineChoice fec = new form_EngineChoice())
+            {
+                if (DialogResult.OK == fec.ShowDialog())
+                {
+                    if (fec.MySQL)
                     {
                         InitializeComponent();
                         DB = new MySQLDBCon(
-                            fec.parameters[0], 
-                            fec.parameters[1], 
-                            fec.parameters[2], 
+                            fec.parameters[0],
+                            fec.parameters[1],
+                            fec.parameters[2],
                             fec.parameters[3]);
 
                         FormClosing += Form_DBTables_FormClosing;
@@ -49,10 +54,17 @@ namespace CRUD_Forms_Prototype
                 }
             }
         }
+        private void form_DBTables_Load(object sender, EventArgs e)
+        {
+            if(DB == null)
+            {
+                Close();
+            }
+        }
 
         private void btn_ChangeTable_Click(object sender, EventArgs e)
         {
-            using (form_InputBox inputForm = new form_InputBox())
+            using (form_TableInput inputForm = new form_TableInput(DB))
             {
                 if (inputForm.ShowDialog() == DialogResult.OK)
                 {
