@@ -6,11 +6,11 @@ using MySql.Data.MySqlClient;
 
 namespace CRUD_Forms_Prototype
 {
-    internal class DBConnection : IDisposable
+    internal class MySQLDBCon : DatabaseConnection
     {
         public MySqlConnection connection;
 
-        public DBConnection(string server, string username, string password, string database)
+        public MySQLDBCon(string server, string username, string password, string database)
         {
             string connectionString =
                 $"Server={server};" +
@@ -22,6 +22,9 @@ namespace CRUD_Forms_Prototype
             try
             {
                 connection = new MySqlConnection(connectionString);
+                connection.Open();
+                MessageBox.Show("MySQL Successfully Connected");
+                connection.Close();
             }
             catch (MySqlException ex)
             {
@@ -29,7 +32,7 @@ namespace CRUD_Forms_Prototype
             }
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             if (connection != null)
             {
@@ -39,7 +42,7 @@ namespace CRUD_Forms_Prototype
         }
 
         //Query Functions
-        public bool query(string query)
+        public override bool query(string query)
         {
             try
             {
@@ -70,7 +73,7 @@ namespace CRUD_Forms_Prototype
                 }
             }
         }
-        public Dictionary<string, string> requestDescription(string table)
+        public override Dictionary<string, string> requestDescription(string table)
         {
             Dictionary<string, string> tableDescription = new Dictionary<string, string>();
             string query = $"DESCRIBE {table};";
@@ -105,7 +108,7 @@ namespace CRUD_Forms_Prototype
             }
             return tableDescription;
         }
-        public DataTable requestAllRecords(string table)
+        public override DataTable requestAllRecords(string table)
         {
             DataTable dt = new DataTable();
             string query = $"SELECT * FROM {table};";

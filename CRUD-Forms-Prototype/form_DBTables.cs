@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
@@ -9,7 +10,7 @@ namespace CRUD_Forms_Prototype
 {
     public partial class form_DBTables : Form
     {
-        private DBConnection DB;
+        private DatabaseConnection DB;
         private string[] headerData;
         private string[] rowData;
         private string currentTable = "";
@@ -17,8 +18,36 @@ namespace CRUD_Forms_Prototype
 
         public form_DBTables()
         {
-            InitializeComponent();
-            DB = new DBConnection("127.0.0.1", "root", "", "gaastatsdb");
+            //Create Database Object Depending On Engine Choice
+            using(form_EngineChoice fec = new form_EngineChoice()) 
+            { 
+                if(DialogResult.OK == fec.ShowDialog()) 
+                { 
+                    if(fec.MySQL)
+                    {
+                        InitializeComponent();
+                        DB = new MySQLDBCon(
+                            fec.parameters[0], 
+                            fec.parameters[1], 
+                            fec.parameters[2], 
+                            fec.parameters[3]);
+
+                        FormClosing += Form_DBTables_FormClosing;
+                    }
+                    else
+                    {
+                        InitializeComponent();
+                        DB = new SQLServerDBCon(
+                            fec.parameters[0],
+                            fec.parameters[1],
+                            fec.parameters[2],
+                            fec.parameters[3],
+                            Convert.ToBoolean(fec.parameters[4]));
+
+                        FormClosing += Form_DBTables_FormClosing;
+                    }
+                }
+            }
         }
 
         private void btn_ChangeTable_Click(object sender, EventArgs e)
@@ -81,7 +110,7 @@ namespace CRUD_Forms_Prototype
                         if (DB.query(query))
                         {
                             MessageBox.Show("Successfully Created Record");
-                            Refresh();
+                            RefreshData();
                         }
                     }
                 }
@@ -125,7 +154,7 @@ namespace CRUD_Forms_Prototype
                         if (DB.query(query))
                         {
                             MessageBox.Show("Record Successfully Updated");
-                            Refresh();
+                            RefreshData();
                         }
                     }
                 }
@@ -148,8 +177,17 @@ namespace CRUD_Forms_Prototype
                 if (DB.query(query))
                 {
                     MessageBox.Show("Successfully Deleted Record");
-                    Refresh();
+                    RefreshData();
                 }
+            }
+        }
+
+        private void Form_DBTables_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (DB != null)
+            {
+                DB.Dispose();
+                Console.WriteLine("MySQL Connection disposed.");
             }
         }
 
@@ -211,7 +249,7 @@ namespace CRUD_Forms_Prototype
             }
         }
 
-        private void Refresh()
+        private void RefreshData()
         {
             try
             {
