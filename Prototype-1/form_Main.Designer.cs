@@ -258,7 +258,7 @@
             // 
             // panel_PlayersPlaying
             // 
-            this.panel_PlayersPlaying.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel_PlayersPlaying.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(255)))), ((int)(((byte)(160)))));
             this.panel_PlayersPlaying.Controls.Add(this.btn_plr1);
             this.panel_PlayersPlaying.Controls.Add(this.btn_plr4);
             this.panel_PlayersPlaying.Controls.Add(this.btn_plr3);
@@ -476,7 +476,7 @@
             // 
             // panel_Actions
             // 
-            this.panel_Actions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel_Actions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(255)))), ((int)(((byte)(160)))));
             this.panel_Actions.Controls.Add(this.label_PLACEHOLDER);
             this.panel_Actions.Location = new System.Drawing.Point(75, 145);
             this.panel_Actions.Name = "panel_Actions";
@@ -495,7 +495,7 @@
             // 
             // panel_PitchGrid
             // 
-            this.panel_PitchGrid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel_PitchGrid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(255)))), ((int)(((byte)(160)))));
             this.panel_PitchGrid.Controls.Add(this.btn_PitchBRight);
             this.panel_PitchGrid.Controls.Add(this.btn_PitchBMiddle);
             this.panel_PitchGrid.Controls.Add(this.btn_PitchBLeft);
