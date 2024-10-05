@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
@@ -100,23 +101,30 @@ namespace CRUD_Forms_Prototype
                 MessageBox.Show("No Table Selected");
                 return;
             }
-            using(form_Record rf = new form_Record(headerData))
+            using (form_Record rf = new form_Record(headerData))
             {
-                if(rf.ShowDialog() == DialogResult.OK)
+                if (rf.ShowDialog() == DialogResult.OK)
                 {
-                    string[] newRecord = rf.returnRecord;               
+                    string[] newRecord = rf.returnRecord;
                     Dictionary<string, string> tableDescription = DB.requestDescription(currentTable);
-                    if(validateDataAgainstDescription(tableDescription, newRecord))
+                    if (validateDataAgainstDescription(tableDescription, newRecord))
                     {
-                        string query = $"INSERT INTO {currentTable} VALUES(";
+                        string query = $"INSERT INTO {currentTable} VALUES (";
                         for (int i = 0; i < newRecord.Length; i++)
                         {
-                            if(i+1 == newRecord.Length)
+                            string colType = tableDescription.Values.ElementAt(i);
+                            if (colType.Contains("varchar") || colType.Contains("nvarchar") || colType.Contains("char") || colType.Contains("text"))
                             {
-                                query += $"\"{newRecord[i]}\"";
-                                continue;
+                                query += $"'{newRecord[i].Replace("'", "''")}'";
                             }
-                            query += $"\"{newRecord[i]}\", ";
+                            else
+                            {
+                                query += $"{newRecord[i]}";
+                            }
+                            if (i + 1 < newRecord.Length)
+                            {
+                                query += ", ";
+                            }
                         }
                         query += ");";
                         if (DB.query(query))
@@ -148,12 +156,22 @@ namespace CRUD_Forms_Prototype
                 {
                     string[] modifiedRecord = rf.returnRecord;
                     Dictionary<string, string> tableDescription = DB.requestDescription(currentTable);
+
                     if (validateDataAgainstDescription(tableDescription, modifiedRecord))
                     {
                         string query = $"UPDATE {currentTable} SET ";
                         for (int i = 0; i < headerData.Length; i++)
                         {
-                            query += $"{headerData[i]} = '{modifiedRecord[i]}'";
+                            string colType = tableDescription[headerData[i]].ToLower();
+                            if (colType.Contains("varchar") || colType.Contains("nvarchar") || colType.Contains("char") || colType.Contains("text"))
+                            {
+                                query += $"{headerData[i]} = '{modifiedRecord[i].Replace("'", "''")}'";
+                            }
+                            else
+                            {
+                                query += $"{headerData[i]} = {modifiedRecord[i]}";
+                            }
+
                             if (i < headerData.Length - 1)
                             {
                                 query += ", ";
@@ -162,7 +180,18 @@ namespace CRUD_Forms_Prototype
 
                         string primaryKey = headerData[0];
                         string primaryKeyValue = rowData[0];
-                        query += $" WHERE {primaryKey} = '{primaryKeyValue}';";
+                        string primaryKeyType = tableDescription[primaryKey].ToLower();
+
+                        if (primaryKeyType.Contains("varchar") || primaryKeyType.Contains("nvarchar") || primaryKeyType.Contains("char") || primaryKeyType.Contains("text"))
+                        {
+                            query += $" WHERE {primaryKey} = '{primaryKeyValue.Replace("'", "''")}';";
+                        }
+                        else
+                        {
+                            
+                            query += $" WHERE {primaryKey} = {primaryKeyValue};";
+                        }
+
                         if (DB.query(query))
                         {
                             MessageBox.Show("Record Successfully Updated");
@@ -185,7 +214,19 @@ namespace CRUD_Forms_Prototype
                 int currentRow = DGV_TableData.CurrentCell.RowIndex;
                 string firstCell = DGV_TableData.Rows[currentRow].Cells[0].Value.ToString();
                 string firstHeader = headerData[0];
-                string query = $"DELETE FROM {currentTable} WHERE {firstHeader} = \"{firstCell}\"";
+
+                Dictionary<string, string> tableDescription = DB.requestDescription(currentTable);
+                string colType = tableDescription[firstHeader].ToLower();
+                string query;
+                if (colType.Contains("varchar") || colType.Contains("nvarchar") || colType.Contains("char") || colType.Contains("text"))
+                {
+                    query = $"DELETE FROM {currentTable} WHERE {firstHeader} = '{firstCell.Replace("'", "''")}'";
+                }
+                else
+                {
+                    query = $"DELETE FROM {currentTable} WHERE {firstHeader} = {firstCell}";
+                }
+
                 if (DB.query(query))
                 {
                     MessageBox.Show("Successfully Deleted Record");
@@ -241,7 +282,7 @@ namespace CRUD_Forms_Prototype
                 {
                     return DateTime.TryParse(value, out _);
                 }
-                else if(type.StartsWith("tinyint"))
+                else if(type.StartsWith("tinyint") || type.StartsWith("smallint"))
                 {
                     return value == "1" || value == "0";
                 }

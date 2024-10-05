@@ -68,7 +68,7 @@ namespace CRUD_Forms_Prototype
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("MySQL Error: " + ex.Message);
+                MessageBox.Show("MySQL Error: " + ex.Message);           
                 return false;
             }
             finally

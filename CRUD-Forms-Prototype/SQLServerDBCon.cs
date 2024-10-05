@@ -16,7 +16,7 @@ namespace CRUD_Forms_Prototype
             _username = username;
             _password = password;
             _database = database;
-            Console.WriteLine($"SERVER: {server} USERNAME: {username} PASSWORD: {password} DATABASE: {database}");
+            
             string connectionString =
                 $"Server={_server};" +
                 $"Database={_database};" +
@@ -78,7 +78,7 @@ namespace CRUD_Forms_Prototype
             }
         }
 
-        public override string[] requestAllTables() 
+        public override string[] requestAllTables()
         {
             List<string> tables = new List<string>();
             try
@@ -118,7 +118,9 @@ namespace CRUD_Forms_Prototype
         public override Dictionary<string, string> requestDescription(string table)
         {
             Dictionary<string, string> tableDescription = new Dictionary<string, string>();
-            string query = $"DESCRIBE {table};";
+            string query = $"SELECT COLUMN_NAME, DATA_TYPE " +
+                           $"FROM INFORMATION_SCHEMA.COLUMNS " +
+                           $"WHERE TABLE_NAME = '{table}'";
 
             try
             {
@@ -129,8 +131,9 @@ namespace CRUD_Forms_Prototype
                     {
                         while (reader.Read())
                         {
-                            string colName = reader["Field"].ToString();
-                            string colType = reader["Type"].ToString();
+                            string colName = reader["COLUMN_NAME"].ToString();
+                            string colType = reader["DATA_TYPE"].ToString();
+                            Console.WriteLine($"COLNAME: {colName} COLTYPE: {colType}");
                             tableDescription.Add(colName, colType);
                         }
                     }
@@ -138,8 +141,8 @@ namespace CRUD_Forms_Prototype
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("SQL Server Error: " + ex.Message);
-                return tableDescription = null;
+                MessageBox.Show("SQL Server ErrorR: " + ex.Message);
+                return null;
             }
             finally
             {
