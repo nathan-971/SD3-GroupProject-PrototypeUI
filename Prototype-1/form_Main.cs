@@ -27,6 +27,62 @@ namespace Prototype_1
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
 
+        //Resizing Values
+        private const int HTLEFT = 10;
+        private const int HTRIGHT = 11;
+        private const int HTTOP = 12;
+        private const int HTTOPLEFT = 13;
+        private const int HTTOPRIGHT = 14;
+        private const int HTBOTTOM = 15;
+        private const int HTBOTTOMLEFT = 16;
+        private const int HTBOTTOMRIGHT = 17;
+
+        private bool isOpened = false;
+
+        //Resize Window
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_NCHITTEST = 0x84;
+            const int resizeBorderWidth = 10;
+
+            SuspendLayout();
+            if (m.Msg == WM_NCHITTEST)
+            {
+                base.WndProc(ref m);
+
+                Point pos = this.PointToClient(new Point(m.LParam.ToInt32()));
+                int width = this.ClientSize.Width;
+                int height = this.ClientSize.Height;
+
+                bool left = pos.X <= resizeBorderWidth;
+                bool right = pos.X >= width - resizeBorderWidth;
+                bool top = pos.Y <= resizeBorderWidth;
+                bool bottom = pos.Y >= height - resizeBorderWidth;
+
+                if (left && top)
+                    m.Result = (IntPtr)HTTOPLEFT;
+                else if (right && top)
+                    m.Result = (IntPtr)HTTOPRIGHT;
+                else if (left && bottom)
+                    m.Result = (IntPtr)HTBOTTOMLEFT;
+                else if (right && bottom)
+                    m.Result = (IntPtr)HTBOTTOMRIGHT;
+                else if (left)
+                    m.Result = (IntPtr)HTLEFT;
+                else if (right)
+                    m.Result = (IntPtr)HTRIGHT;
+                else if (top)
+                    m.Result = (IntPtr)HTTOP;
+                else if (bottom)
+                    m.Result = (IntPtr)HTBOTTOM;
+            }
+            else
+            {
+                base.WndProc(ref m);
+            }
+            ResumeLayout();
+        }
+
         public form_Main()
         {
             InitializeComponent();
@@ -34,9 +90,9 @@ namespace Prototype_1
 
             btn_ExpandMenu.BringToFront();
             panel_Nav.MouseDown += panel_Nav_MouseDown;
-            panel_Nav.Paint += new PaintEventHandler(panel_Nav_Paint);
-            this.Paint += new PaintEventHandler(form_Main_Paint);
         }
+
+        //Drag Window Via Navbar
         private void panel_Nav_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -45,40 +101,7 @@ namespace Prototype_1
                 SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
             }
         }
-        private void form_Main_Paint(object sender, PaintEventArgs e)
-        {
-            Color gradiantColor1 = new Color();
-            Color gradiantColor2 = new Color();
 
-            gradiantColor1 = Color.FromArgb(255, 255, 255);
-            gradiantColor2 = Color.FromArgb(180, 180, 180);
-
-            Point startPoint = new Point(this.ClientRectangle.Left, this.ClientRectangle.Top); 
-            Point endPoint = new Point(this.ClientRectangle.Right, this.ClientRectangle.Bottom);
-
-            using (LinearGradientBrush brush = new LinearGradientBrush(startPoint, endPoint, gradiantColor1, gradiantColor2))
-            {
-                e.Graphics.FillRectangle(brush, this.ClientRectangle);
-            }
-        }
-        private void panel_Nav_Paint(object sender, PaintEventArgs e)
-        {
-            Color gradiantColor1 = new Color();
-            Color gradiantColor2 = new Color();
-
-            gradiantColor1 = Color.FromArgb(60, 120, 0);
-            gradiantColor2 = Color.FromArgb(0, 80, 0);
-
-            Point startPoint = new Point(this.ClientRectangle.Left, this.ClientRectangle.Top);
-            Point endPoint = new Point(this.ClientRectangle.Right, this.ClientRectangle.Bottom);
-
-            using (LinearGradientBrush brush = new LinearGradientBrush(startPoint, endPoint, gradiantColor1, gradiantColor2))
-            {
-                e.Graphics.FillRectangle(brush, this.ClientRectangle);
-            }
-        }
-
-        private bool isOpened = false;
         private void btn_ExpandMenu_Click(object sender, EventArgs e)
         {
             if (isOpened)
