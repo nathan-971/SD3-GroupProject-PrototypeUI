@@ -1,2 +1,3 @@
 # SD3-GroupProject-PrototypeUI
- Samples of WinForms Designs for Group Project
+  -Prototype CRUD Application
+  -Prototype UI Application
