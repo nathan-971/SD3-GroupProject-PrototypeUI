@@ -18,7 +18,6 @@ namespace Prototype_1
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
-
         [DllImport("user32.dll")]
         public static extern void ReleaseCapture();
         [DllImport("user32.dll")]
@@ -26,7 +25,7 @@ namespace Prototype_1
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
-
+        //1377
         //Resizing Values
         private const int HTLEFT = 10;
         private const int HTRIGHT = 11;
@@ -38,6 +37,46 @@ namespace Prototype_1
         private const int HTBOTTOMRIGHT = 17;
 
         private bool isOpened = false;
+
+        public form_Main()
+        {
+            InitializeComponent();
+            AllocConsole();
+
+            this.btn_ExpandMenu.BringToFront();
+            this.panel_Nav.MouseDown += panel_Nav_MouseDown;
+
+            #region Pitch Grid Buttons
+            btn_Pitch_TOPLEFT.Click += new EventHandler(pitch_Btn_Click);
+            btn_Pitch_TOPCENTRE.Click += new EventHandler(pitch_Btn_Click);
+            btn_Pitch_TOPRIGHT.Click += new EventHandler(pitch_Btn_Click);
+
+            btn_Pitch_CENTRELEFT.Click += new EventHandler(pitch_Btn_Click);
+            btn_Pitch_CENTRE.Click += new EventHandler(pitch_Btn_Click);
+            btn_Pitch_CENTRERIGHT.Click += new EventHandler(pitch_Btn_Click);
+
+            btn_Pitch_BOTTOMLEFT.Click += new EventHandler(pitch_Btn_Click);
+            btn_Pitch_BOTTOMCENTRE.Click += new EventHandler(pitch_Btn_Click);
+            btn_Pitch_BOTTOMRIGHT.Click += new EventHandler(pitch_Btn_Click);
+            #endregion
+            #region Player Grid Buttons
+            btn_Player_1.Click += new EventHandler(player_Btn_Click);
+            btn_Player_2.Click += new EventHandler(player_Btn_Click);
+            btn_Player_3.Click += new EventHandler(player_Btn_Click);
+            btn_Player_4.Click += new EventHandler(player_Btn_Click);
+            btn_Player_5.Click += new EventHandler(player_Btn_Click);
+            btn_Player_6.Click += new EventHandler(player_Btn_Click);
+            btn_Player_7.Click += new EventHandler(player_Btn_Click);
+            btn_Player_8.Click += new EventHandler(player_Btn_Click);
+            btn_Player_9.Click += new EventHandler(player_Btn_Click);
+            btn_Player_10.Click += new EventHandler(player_Btn_Click);
+            btn_Player_11.Click += new EventHandler(player_Btn_Click);
+            btn_Player_12.Click += new EventHandler(player_Btn_Click);
+            btn_Player_13.Click += new EventHandler(player_Btn_Click);
+            btn_Player_14.Click += new EventHandler(player_Btn_Click);
+            btn_Player_15.Click += new EventHandler(player_Btn_Click);
+            #endregion
+        }
 
         //Resize Window
         protected override void WndProc(ref Message m)
@@ -81,15 +120,6 @@ namespace Prototype_1
                 base.WndProc(ref m);
             }
             ResumeLayout();
-        }
-
-        public form_Main()
-        {
-            InitializeComponent();
-            AllocConsole();
-
-            btn_ExpandMenu.BringToFront();
-            panel_Nav.MouseDown += panel_Nav_MouseDown;
         }
 
         //Drag Window Via Navbar
@@ -146,6 +176,21 @@ namespace Prototype_1
             }
         }
 
+        private void pitch_Btn_Click(object sender, EventArgs e)
+        {
+            using(form_Grid fg = new form_Grid())
+            {
+                fg.ShowDialog();
+            }
+        }
+        private void player_Btn_Click(object sender, EventArgs e)
+        {
+            using (form_Player fp = new form_Player())
+            {
+                fp.ShowDialog();
+            }
+        }
+
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -154,6 +199,11 @@ namespace Prototype_1
         private void btn_Minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btn_Maximize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

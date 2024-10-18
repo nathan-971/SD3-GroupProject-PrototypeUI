@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_Main));
             this.panel_Nav = new System.Windows.Forms.Panel();
+            this.btn_Maximize = new System.Windows.Forms.Button();
             this.btn_Minimize = new System.Windows.Forms.Button();
             this.label_Title = new System.Windows.Forms.Label();
             this.btn_Exit = new System.Windows.Forms.Button();
@@ -91,6 +92,7 @@
             // panel_Nav
             // 
             this.panel_Nav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(0)))));
+            this.panel_Nav.Controls.Add(this.btn_Maximize);
             this.panel_Nav.Controls.Add(this.btn_Minimize);
             this.panel_Nav.Controls.Add(this.label_Title);
             this.panel_Nav.Controls.Add(this.btn_Exit);
@@ -99,6 +101,24 @@
             this.panel_Nav.Name = "panel_Nav";
             this.panel_Nav.Size = new System.Drawing.Size(1414, 28);
             this.panel_Nav.TabIndex = 0;
+            // 
+            // btn_Maximize
+            // 
+            this.btn_Maximize.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btn_Maximize.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Maximize.FlatAppearance.BorderSize = 0;
+            this.btn_Maximize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btn_Maximize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(0)))));
+            this.btn_Maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Maximize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Maximize.ForeColor = System.Drawing.Color.White;
+            this.btn_Maximize.Location = new System.Drawing.Point(1338, 0);
+            this.btn_Maximize.Name = "btn_Maximize";
+            this.btn_Maximize.Size = new System.Drawing.Size(35, 28);
+            this.btn_Maximize.TabIndex = 3;
+            this.btn_Maximize.Text = "-";
+            this.btn_Maximize.UseVisualStyleBackColor = false;
+            this.btn_Maximize.Click += new System.EventHandler(this.btn_Maximize_Click);
             // 
             // btn_Minimize
             // 
@@ -110,7 +130,7 @@
             this.btn_Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Minimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Minimize.ForeColor = System.Drawing.Color.White;
-            this.btn_Minimize.Location = new System.Drawing.Point(1338, 0);
+            this.btn_Minimize.Location = new System.Drawing.Point(1297, 0);
             this.btn_Minimize.Name = "btn_Minimize";
             this.btn_Minimize.Size = new System.Drawing.Size(35, 28);
             this.btn_Minimize.TabIndex = 2;
@@ -925,5 +945,6 @@
         private System.Windows.Forms.Button btn_Player_14;
         private System.Windows.Forms.Button btn_Player_12;
         private System.Windows.Forms.Button btn_Player_15;
+        private System.Windows.Forms.Button btn_Maximize;
     }
-} //289
+} 
